@@ -48,10 +48,9 @@ namespace BattleSharp
             var client = new HttpClient();
             var jsonstring = client.GetStringAsync($"http://auction-api-us.worldofwarcraft.com/auction-data/ab1239c3bc437d48321a64e6b5e5ab7f/auctions.json").GetAwaiter().GetResult();
             
-
             JObject googleSearch = JObject.Parse(jsonstring);
 
-            IList<JToken> results = googleSearch["auctions"].Children().ToList();
+            var results = googleSearch["auctions"].Children();
             IList<Auction> searchResults = new List<Auction>();
 
             foreach (JToken result in results) {
@@ -77,14 +76,10 @@ namespace BattleSharp
             var results = googleSearch["auctions"].Children();
             IList<Auction> searchResults = new List<Auction>();
 
-
-            foreach (JToken result in results)
-            {
+            foreach (JToken result in results) {
                 Auction searchResult = result.ToObject<Auction>();
                 searchResults.Add(searchResult);
             }
-
-            //Console.WriteLine(searchResults);
 
             return searchResults;
         }
@@ -92,7 +87,7 @@ namespace BattleSharp
         public Auctions GetAuctions2(string realm) {
             var client = new HttpClient();
             var jsonstring = client.GetStringAsync($"https://eu.api.battle.net/wow/auction/data/{realm}?locale=en_GB&apikey={APIKey}").GetAwaiter().GetResult();
-            var files = JsonConvert.DeserializeObject<AuctionFiles>(jsonstring);
+            var files = JsonConvert.DeserializeObject<AuctionFiles>(jsonstring, new AuctionFileConverter());
 
             HashSet<string> urlSet = new HashSet<string>();
             List<string> urlList = new List<string>();
@@ -103,7 +98,7 @@ namespace BattleSharp
                 }
             }
 
-            return JsonConvert.DeserializeObject<Auctions>(client.GetStringAsync(urlList[0]).GetAwaiter().GetResult());
+            return JsonConvert.DeserializeObject<Auctions>(client.GetStringAsync(urlList[0]).GetAwaiter().GetResult(), new AuctionConverter());
         }
 
         public Auctions GetAuctions(string realm) {

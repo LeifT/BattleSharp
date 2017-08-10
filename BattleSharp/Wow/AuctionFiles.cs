@@ -6,12 +6,12 @@ namespace BattleSharp.Wow {
     [JsonObject]
     public class AuctionFiles : IEnumerable<AuctionFile> {
         [JsonProperty]
-        private IEnumerable<AuctionFile> files {
+        public ICollection<AuctionFile> Files {
             get; set; 
         }
 
         public IEnumerator<AuctionFile> GetEnumerator() {
-            return files.GetEnumerator();
+            return Files.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() {

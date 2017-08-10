@@ -6,7 +6,7 @@ namespace BattleSharp.Wow {
     [JsonObject]
     public class Auctions : IEnumerable<Auction> {
         [JsonProperty]
-        private IEnumerable<Auction> auctions { get; set; }
+        public ICollection<Auction> auctions { get; set; }
 
         public IEnumerator<Auction> GetEnumerator() {
             return auctions.GetEnumerator();

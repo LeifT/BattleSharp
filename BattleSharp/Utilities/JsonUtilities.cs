@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace BattleSharp.Utilities {
 
@@ -37,13 +38,15 @@ namespace BattleSharp.Utilities {
 
         public static async Task<T> DeserializeStreamFromUrlAync<T>(string url) where T : class {
             var client = new HttpClient();
-            var task = client.GetStreamAsync(url);
+            var task = await client.GetStreamAsync(url);
             
             T deserializedObject;
 
-            using (StreamReader streamReader = new StreamReader(await task.ConfigureAwait(false))) {
+            using (StreamReader streamReader = new StreamReader(task)) {
                 using (JsonTextReader jsonReader = new JsonTextReader(streamReader)) {
+          
                     JsonSerializer serializer = new JsonSerializer();
+             
                     deserializedObject = serializer.Deserialize<T>(jsonReader);
                 }
             }
