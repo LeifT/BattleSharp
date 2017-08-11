@@ -21,7 +21,6 @@ namespace BattleSharp.Utilities {
             using (StreamReader streamReader = new StreamReader(jsonStream)) {
                 using (JsonTextReader jsonReader = new JsonTextReader(streamReader)) {
                     JsonSerializer serializer = new JsonSerializer();
-                    
                     deserializedObject = serializer.Deserialize<T>(jsonReader);
                 }
             }
@@ -29,13 +28,15 @@ namespace BattleSharp.Utilities {
             return deserializedObject;
         }
 
-        public static T DeserializeUrl<T>(string url) where T : class {
-            var client = new HttpClient();
-            var jsonStream = client.GetStreamAsync(url);
-            return DeserializeStream<T>(jsonStream.ConfigureAwait(false).GetAwaiter().GetResult());
-        }
-
         public static async Task<T> DeserializeUrlAync<T>(string url) where T : class {
+            if (string.IsNullOrWhiteSpace(url)) {
+                if (url == null) {
+                    throw new ArgumentNullException(nameof(url));
+                }
+
+                throw new ArgumentException(nameof(url));
+            }
+
             var client = new HttpClient();
             var jsonStream = await client.GetStreamAsync(url);
             return DeserializeStream<T>(jsonStream);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using BattleSharp.Utilities;
@@ -15,6 +16,13 @@ namespace BattleSharp
         }
 
         public async Task<List<AuctionHouseFile>> GetAuctionHouseFiles(string realm) {
+            if (string.IsNullOrWhiteSpace(realm)) {
+                if (realm == null) {
+                    throw new ArgumentNullException(nameof(realm));
+                }
+                throw new ArgumentException(nameof(realm));
+            }
+
             var client = new HttpClient();
             var jsonstring = client.GetStringAsync($"https://eu.api.battle.net/wow/auction/data/{realm}?locale=en_GB&apikey={ApiKey}");
             return JObject.Parse(await jsonstring.ConfigureAwait(false)).SelectToken("files").ToObject<List<AuctionHouseFile>>();
