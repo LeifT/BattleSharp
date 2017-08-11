@@ -3,8 +3,6 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 
 namespace BattleSharp.Utilities {
 
@@ -23,6 +21,7 @@ namespace BattleSharp.Utilities {
             using (StreamReader streamReader = new StreamReader(jsonStream)) {
                 using (JsonTextReader jsonReader = new JsonTextReader(streamReader)) {
                     JsonSerializer serializer = new JsonSerializer();
+                    
                     deserializedObject = serializer.Deserialize<T>(jsonReader);
                 }
             }
@@ -30,28 +29,16 @@ namespace BattleSharp.Utilities {
             return deserializedObject;
         }
 
-        public static T DeserializeStreamFromUrl<T>(string url) where T : class {
+        public static T DeserializeUrl<T>(string url) where T : class {
             var client = new HttpClient();
-            var task = client.GetStreamAsync(url);
-            return DeserializeStream<T>(task.ConfigureAwait(false).GetAwaiter().GetResult());
+            var jsonStream = client.GetStreamAsync(url);
+            return DeserializeStream<T>(jsonStream.ConfigureAwait(false).GetAwaiter().GetResult());
         }
 
-        public static async Task<T> DeserializeStreamFromUrlAync<T>(string url) where T : class {
+        public static async Task<T> DeserializeUrlAync<T>(string url) where T : class {
             var client = new HttpClient();
-            var task = await client.GetStreamAsync(url);
-            
-            T deserializedObject;
-
-            using (StreamReader streamReader = new StreamReader(task)) {
-                using (JsonTextReader jsonReader = new JsonTextReader(streamReader)) {
-          
-                    JsonSerializer serializer = new JsonSerializer();
-             
-                    deserializedObject = serializer.Deserialize<T>(jsonReader);
-                }
-            }
-
-            return deserializedObject;
+            var jsonStream = await client.GetStreamAsync(url);
+            return DeserializeStream<T>(jsonStream);
         }
     }
 }
