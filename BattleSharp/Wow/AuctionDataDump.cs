@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 
 namespace BattleSharp.Wow {
-    public class AuctionHouseData  {
+    public class AuctionDataDump  {
         [JsonProperty]
         public ICollection<Auction> Auctions { get; private set; }
 

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace BattleSharp.Utilities {
 
     public static class JsonUtilities {
-        public static T DeserializeStream<T>(Stream jsonStream) where T : class {
+        private static T DeserializeStream<T>(Stream jsonStream) where T : class {
             if (jsonStream == null) {
                 throw new ArgumentNullException(nameof(jsonStream));
             }

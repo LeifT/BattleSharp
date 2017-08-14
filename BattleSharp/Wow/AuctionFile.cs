@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 namespace BattleSharp.Wow {
-    public class AuctionHouseFile {
+    public class AuctionFile {
         [JsonProperty]
         public string Url { get; private set; }
 
