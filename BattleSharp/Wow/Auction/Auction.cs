@@ -1,21 +1,21 @@
 ﻿namespace BattleSharp.Wow.Auction {
     public class Auction {
-        public long auc;
-        public int item;
-        public string owner;
-        public string ownerRealm;
-        public long bid;
-        public long buyout;
-        public int quantity;
-        public string timeLeft;
-        public long rand;
-        public long seed;
-        public int context;
+        public long Auc;
+        public int Item;
+        public string Owner;
+        public string OwnerRealm;
+        public long Bid;
+        public long Buyout;
+        public int Quantity;
+        public string TimeLeft;
+        public long Rand;
+        public long Seed;
+        public int Context;
         // bonusLists
         // modifiers
-        public int petSpeciesId;
-        public int petBreedId;
-        public int petLevel;
-        public int petQualityId;
+        public int PetSpeciesId;
+        public int PetBreedId;
+        public int PetLevel;
+        public int PetQualityId;
     }
 }

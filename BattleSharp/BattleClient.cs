@@ -3,8 +3,7 @@ using BattleSharp.Utilities;
 using BattleSharp.Wow.Auction;
 using BattleSharp.Wow.Item;
 
-namespace BattleSharp
-{
+namespace BattleSharp {
     public class BattleClient {
         public  string  ApiKey { get; }
 

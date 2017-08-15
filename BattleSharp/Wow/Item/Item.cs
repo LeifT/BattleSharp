@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace BattleSharp.Wow.Item {
+
+    // TODO: Fix this monster
+
     public class Item {
         public int Id { get; set; }
         public int DisenchantingSkillRank { get; set; }
@@ -9,6 +11,8 @@ namespace BattleSharp.Wow.Item {
         public string Name { get; set; }
         public string Icon { get; set; }
         public int Stackable { get; set; }
+        public ICollection<int> AllowableClasses { get; set; }
+        public ICollection<int> AllowableRaces { get; set; }
         public int ItemBind { get; set; }
         public ICollection<BonusStats> BonusStats { get; set; }
         public ICollection<ItemSpell> ItemSpells { get; set; }
@@ -20,6 +24,8 @@ namespace BattleSharp.Wow.Item {
         public int InventoryType { get; set; }
         public bool Equippable { get; set; }
         public int ItemLevel { get; set; }
+        public TooltipParams TooltipParams { get; set; }    //
+        public ICollection<Stat> Stats { get; set; } // 
         public int MaxCount { get; set; }
         public int MaxDurability { get; set; }
         public int MinFactionId { get; set; }
@@ -44,6 +50,10 @@ namespace BattleSharp.Wow.Item {
         public ICollection<string> AvailableContexts { get; set; }
         public BonusSummary BonusSummary { get; set; }
         public int ArtifactId { get; set; }
+        public int ArtifactAppearanceId { get; set; } //
+        public ICollection<ArtifactTrait> ArtifactTraits { get; set; } //
+        public ICollection<Relic> Relics { get; set; }      //
+        public Appearance Appearance { get; set; }          // 
 
         public override string ToString() {
             return Name;

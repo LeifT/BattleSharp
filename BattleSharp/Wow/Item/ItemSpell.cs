@@ -17,14 +17,14 @@ namespace BattleSharp.Wow.Item {
         [EnumMember(Value = "NONE")]
         None,
         [EnumMember(Value = "ON_EQUIP")]
-        Equip,
+        OnEquip,
         [EnumMember(Value = "ON_USE")]
-        Use,
+        OnUse,
         [EnumMember(Value = "ON_PROC")]
-        Proc,
+        OnProc,
         [EnumMember(Value = "ON_PICKUP")]
-        Pickup,
+        OnPickup,
         [EnumMember(Value = "ON_LEARN")]
-        Learn
+        OnLearn
     }
 }
