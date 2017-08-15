@@ -6,7 +6,7 @@ namespace BattleSharp.Wow.Auction {
     [JsonObject]
     public class AuctionDataStatus : IEnumerable<AuctionFile> {
         [JsonProperty]
-        public List<AuctionFile> Files { get; private set; }
+        public IList<AuctionFile> Files { get; private set; }
 
         public IEnumerator<AuctionFile> GetEnumerator() {
             return Files.GetEnumerator();

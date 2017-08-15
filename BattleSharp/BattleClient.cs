@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BattleSharp.Utilities;
 using BattleSharp.Wow.Auction;
+using BattleSharp.Wow.Item;
 
 namespace BattleSharp
 {
@@ -24,6 +25,14 @@ namespace BattleSharp
         public async Task<AuctionDataDump> GetAuctionHouseData(string realm) {
             var files = await GetAuctionHouseFiles(realm).ConfigureAwait(false);
             return await GetAuctionHouseData(files.Files[0]).ConfigureAwait(false);
+        }
+
+        #endregion
+
+        #region Item
+
+        public async Task<Item> GetItem(int itemId) {
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}?locale=en_GB&apikey={ApiKey}");
         }
 
         #endregion

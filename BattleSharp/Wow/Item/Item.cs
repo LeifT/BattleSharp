@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BattleSharp.Wow.Item {
     public class Item {
@@ -41,7 +42,7 @@ namespace BattleSharp.Wow.Item {
         public string Context { get; set; }
         public ICollection<int> BonusLists { get; set; }
         public ICollection<string> AvailableContexts { get; set; }
-        public ICollection<BonusSummary> BonusSummary { get; set; }
+        public BonusSummary BonusSummary { get; set; }
         public int ArtifactId { get; set; }
 
         public override string ToString() {
@@ -49,15 +50,14 @@ namespace BattleSharp.Wow.Item {
         }
     }
 
-    public enum Quality {
-        Poor,
-        Common,
-        Uncommon,
-        Rare,
-        Epic,
-        Legendary,
-        Artifact,
-        Heirloom,
-        WoWToken
-    }
+    //public enum Quality {
+    //    Poor,
+    //    Common,
+    //    Uncommon,
+    //    Rare,
+    //    Epic,
+    //    Legendary,
+    //    Artifact,
+    //    Heirloom
+    //}
 }
