@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace BattleSharp.Wow {
+namespace BattleSharp.Wow.Auction {
     public class AuctionDataDump  {
         [JsonProperty]
         public ICollection<Auction> Auctions { get; private set; }

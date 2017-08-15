@@ -1,4 +1,4 @@
-﻿namespace BattleSharp.Wow {
+﻿namespace BattleSharp.Wow.Auction {
     public class Auction {
         public long auc;
         public int item;

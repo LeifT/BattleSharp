@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using BattleSharp.Utilities;
-using BattleSharp.Wow;
+using BattleSharp.Wow.Auction;
 
 namespace BattleSharp
 {
     public class BattleClient {
-        public string ApiKey { get; set; }
+        public  string  ApiKey { get; }
 
         public BattleClient(string apiKey) {
             ApiKey = apiKey;
