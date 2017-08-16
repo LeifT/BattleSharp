@@ -11,8 +11,6 @@ namespace BattleSharp.Wow.DataResources {
             return Classes.GetEnumerator();
         }
 
-        //public ItemClass this[int index] => Classes[index];
-
         IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();
         }

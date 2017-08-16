@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BattleSharp.Wow.RealmStatus;
 using Newtonsoft.Json;
 
 namespace BattleSharp.Wow.Auction {

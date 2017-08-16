@@ -8,6 +8,10 @@ namespace BattleSharp.Wow.Item {
         public ICollection<Socket> Sockets { get; set; }
 
         public class Stat {
+            private Stat() {
+                
+            }
+
             public string StatId { get; set; }
             public int Delta { get; set; }
             public int MaxDelta { get; set; }

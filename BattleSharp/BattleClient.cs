@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BattleSharp.Utilities;
 using BattleSharp.Wow.Auction;
+using BattleSharp.Wow.DataResources;
 using BattleSharp.Wow.Item;
 
 namespace BattleSharp {
@@ -32,6 +33,10 @@ namespace BattleSharp {
 
         public async Task<Item> GetItem(int itemId) {
             return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}?locale=en_GB&apikey={ApiKey}");
+        }
+
+        public async Task<ItemClasses> GetItemClasses() {
+            return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&&apikey={ApiKey}");
         }
 
         #endregion

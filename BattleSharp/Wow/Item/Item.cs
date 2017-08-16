@@ -49,8 +49,8 @@ namespace BattleSharp.Wow.Item {
         public ICollection<int> BonusLists { get; set; }
         public ICollection<string> AvailableContexts { get; set; }
         public BonusSummary BonusSummary { get; set; }
-        public int ArtifactId { get; set; }
-        public int ArtifactAppearanceId { get; set; } //
+        public int ArtifactId { get; set; }           // Artifact
+        public int ArtifactAppearanceId { get; set; } // Artifact
         public ICollection<ArtifactTrait> ArtifactTraits { get; set; } //
         public ICollection<Relic> Relics { get; set; }      //
         public Appearance Appearance { get; set; }          // 
