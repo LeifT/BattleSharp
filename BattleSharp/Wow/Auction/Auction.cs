@@ -13,9 +13,9 @@
         public int Context;
         // bonusLists
         // modifiers
-        public int PetSpeciesId;
-        public int PetBreedId;
-        public int PetLevel;
-        public int PetQualityId;
+        public int PetSpeciesId;        // Pet
+        public int PetBreedId;          // Pet
+        public int PetLevel;            // Pet
+        public int PetQualityId;        // Pet
     }
 }
