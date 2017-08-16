@@ -3,6 +3,7 @@ using BattleSharp.Utilities;
 using BattleSharp.Wow.Auction;
 using BattleSharp.Wow.DataResources;
 using BattleSharp.Wow.Item;
+using BattleSharp.Wow.RealmStatus;
 
 namespace BattleSharp {
     public class BattleClient {
@@ -36,7 +37,19 @@ namespace BattleSharp {
         }
 
         public async Task<ItemClasses> GetItemClasses() {
-            return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&&apikey={ApiKey}");
+            return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&apikey={ApiKey}");
+        }
+
+        #endregion
+
+        #region Realm
+
+        public async Task<Realms> GetRealms() {
+            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey={ApiKey}");
+        }
+
+        public async Task<Realms> GetRealms(params string[] realms) {
+            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?realms={string.Join(",", realms)}&locale=en_GB&apikey={ApiKey}");
         }
 
         #endregion

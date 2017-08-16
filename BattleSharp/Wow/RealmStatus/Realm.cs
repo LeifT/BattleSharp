@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BattleSharp.Wow.RealmStatus {
     public class Realm {
@@ -11,6 +12,8 @@ namespace BattleSharp.Wow.RealmStatus {
         public string Battlegroup { get; set; }
         public string Locale { get; set; }
         public string Timezone { get; set; }
+
+        [JsonProperty(PropertyName = "connected_realms")]
         public IList<string> ConnectedRealms { get; set; }
     }
 }
