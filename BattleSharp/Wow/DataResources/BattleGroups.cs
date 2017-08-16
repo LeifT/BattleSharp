@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace BattleSharp.Wow.DataResources {
+    [JsonObject]
     public class BattleGroups : IEnumerable<BattleGroup> {
         [JsonProperty(PropertyName = "battlegroups")]
         private ICollection<BattleGroup> Groups { get; }
