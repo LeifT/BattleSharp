@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using BattleSharp.Utilities;
+using BattleSharp.Wow.Achievement;
 using BattleSharp.Wow.AuctionAPI;
 using BattleSharp.Wow.BossAPI;
 using BattleSharp.Wow.DataResources;
@@ -14,6 +15,14 @@ namespace BattleSharp {
         public BattleClient(string apiKey) {
             ApiKey = apiKey;
         }
+
+        #region Achievement API 
+
+        public async Task<Achievement> GeAchievement(int achievementId) {
+            return await JsonUtilities.DeserializeUrlAync<Achievement>($"https://eu.api.battle.net/wow/achievement/{achievementId}?locale=en_GB&apikey={ApiKey}");
+        }
+
+        #endregion
 
         #region Auction API 
 
@@ -62,8 +71,22 @@ namespace BattleSharp {
             return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}/{context}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}");
         }
 
+        // TODO Get item set
+
         public async Task<ItemClasses> GetItemClasses() {
             return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&apikey={ApiKey}");
+        }
+
+        #endregion
+
+        #region Realm Status API 
+
+        public async Task<Realms> GetRealms() {
+            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey={ApiKey}");
+        }
+
+        public async Task<Realms> GetRealms(params string[] realms) {
+            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?realms={string.Join(",", realms)}&locale=en_GB&apikey={ApiKey}");
         }
 
         #endregion
@@ -72,18 +95,6 @@ namespace BattleSharp {
 
         public async Task<Spell> GetSpell(int spellId) {
             return await JsonUtilities.DeserializeUrlAync<Spell>($"https://eu.api.battle.net/wow/spell/{spellId}?locale=en_GB&apikey={ApiKey}");
-        }
-
-        #endregion
-
-        #region Realm API
-
-        public async Task<Realms> GetRealms() {
-            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey={ApiKey}");
-        }
-
-        public async Task<Realms> GetRealms(params string[] realms) {
-            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?realms={string.Join(",", realms)}&locale=en_GB&apikey={ApiKey}");
         }
 
         #endregion
