@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BattleSharp.Utilities;
 using BattleSharp.Wow.AuctionAPI;
+using BattleSharp.Wow.BossAPI;
 using BattleSharp.Wow.DataResources;
 using BattleSharp.Wow.Item;
 using BattleSharp.Wow.RealmStatus;
@@ -14,7 +15,7 @@ namespace BattleSharp {
             ApiKey = apiKey;
         }
 
-        #region Auction House
+        #region Auction API 
 
         public async Task<AuctionDataStatus> GetAuctionFiles(string realm) {
             return await JsonUtilities.DeserializeUrlAync<AuctionDataStatus>($"https://eu.api.battle.net/wow/auction/data/{realm}?locale=en_GB&apikey={ApiKey}");
@@ -31,7 +32,19 @@ namespace BattleSharp {
 
         #endregion
 
-        #region Item
+        #region Boss API
+
+        public async Task<MasterList> GetMasterList() {
+            return await JsonUtilities.DeserializeUrlAync<MasterList>($"https://eu.api.battle.net/wow/boss/?locale=en_GB&apikey={ApiKey}");
+        }
+
+        public async Task<Boss> GetBoss(int bossId) {
+            return await JsonUtilities.DeserializeUrlAync<Boss>($"https://eu.api.battle.net/wow/boss/{bossId}?locale=en_GB&apikey={ApiKey}");
+        }
+
+        #endregion
+
+        #region Item API
 
         public async Task<Item> GetItem(int itemId) {
             return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}?locale=en_GB&apikey={ApiKey}");
@@ -43,7 +56,7 @@ namespace BattleSharp {
 
         #endregion
 
-        #region Spell
+        #region Spell API
 
         public async Task<Spell> GetSpell(int spellId) {
             return await JsonUtilities.DeserializeUrlAync<Spell>($"https://eu.api.battle.net/wow/spell/{spellId}?locale=en_GB&apikey={ApiKey}");
@@ -51,7 +64,7 @@ namespace BattleSharp {
 
         #endregion
 
-        #region Realm
+        #region Realm API
 
         public async Task<Realms> GetRealms() {
             return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey={ApiKey}");

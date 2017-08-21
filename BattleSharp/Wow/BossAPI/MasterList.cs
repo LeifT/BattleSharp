@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace BattleSharp.Wow.Boss {
+namespace BattleSharp.Wow.BossAPI {
     [JsonObject]
     public class MasterList : IEnumerable<Boss> {
         public ICollection<Boss> Bosses { get; set; }

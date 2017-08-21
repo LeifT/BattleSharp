@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using BattleSharp.Wow.Boss;
 
-namespace BattleSharp.Wow.Boss {
+namespace BattleSharp.Wow.BossAPI {
     public class Boss {
         public int Id { get; set; }
         public string Name { get; set; }

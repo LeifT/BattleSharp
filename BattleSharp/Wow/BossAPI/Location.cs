@@ -1,4 +1,4 @@
-﻿namespace BattleSharp.Wow.Boss {
+﻿namespace BattleSharp.Wow.BossAPI {
     public class Location {
         public int Id { get; set; }
         public string Name { get; set; }
