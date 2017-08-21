@@ -15,17 +15,17 @@ namespace BattleSharp {
 
         #region Auction House
 
-        public async Task<AuctionDataStatus> GetAuctionHouseFiles(string realm) {
+        public async Task<AuctionDataStatus> GetAuctionFiles(string realm) {
             return await JsonUtilities.DeserializeUrlAync<AuctionDataStatus>($"https://eu.api.battle.net/wow/auction/data/{realm}?locale=en_GB&apikey={ApiKey}");
         }
 
-        public async Task<AuctionDataDump> GetAuctionHouseData(AuctionFile auctionHouseFile) {
+        public async Task<AuctionDataDump> GetAuctionData(AuctionFile auctionHouseFile) {
             return await JsonUtilities.DeserializeUrlAync<AuctionDataDump>(auctionHouseFile.Url);
         }
 
-        public async Task<AuctionDataDump> GetAuctionHouseData(string realm) {
-            var files = await GetAuctionHouseFiles(realm).ConfigureAwait(false);
-            return await GetAuctionHouseData(files.Files[0]).ConfigureAwait(false);
+        public async Task<AuctionDataDump> GetAuctionData(string realm) {
+            var files = await GetAuctionFiles(realm);
+            return await GetAuctionData(files.Files[0]);
         }
 
         #endregion

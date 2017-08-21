@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -17,7 +18,7 @@ namespace BattleSharp.Utilities {
             }
 
             T deserializedObject;
-
+            
             using (StreamReader streamReader = new StreamReader(jsonStream)) {
                 using (JsonTextReader jsonReader = new JsonTextReader(streamReader)) {
                     JsonSerializer serializer = new JsonSerializer();
@@ -37,8 +38,16 @@ namespace BattleSharp.Utilities {
                 throw new ArgumentException(nameof(url));
             }
 
-            var client = new HttpClient();
-            var jsonStream = await client.GetStreamAsync(url);
+            var handler = new HttpClientHandler {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            Stream jsonStream;
+
+            using (var client = new HttpClient(handler)) {
+                jsonStream = await client.GetStreamAsync(url);
+            }
+            
             return DeserializeStream<T>(jsonStream);
         }
     }
