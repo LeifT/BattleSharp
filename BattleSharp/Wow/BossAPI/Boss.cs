@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using BattleSharp.Wow.Boss;
 
 namespace BattleSharp.Wow.BossAPI {
     public class Boss {

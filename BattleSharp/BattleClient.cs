@@ -50,6 +50,18 @@ namespace BattleSharp {
             return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}?locale=en_GB&apikey={ApiKey}");
         }
 
+        public async Task<Item> GetItem(int itemId, params int[] bonusList) {
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}");
+        }
+
+        public async Task<Item> GetItem(int itemId, string context) {
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}/{context}?locale=en_GB&apikey={ApiKey}");
+        }
+
+        public async Task<Item> GetItem(int itemId, string context, params int[] bonusList) {
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}/{context}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}");
+        }
+
         public async Task<ItemClasses> GetItemClasses() {
             return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&apikey={ApiKey}");
         }
