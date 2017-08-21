@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using BattleSharp.Utilities;
-using BattleSharp.Wow.Auction;
+using BattleSharp.Wow.AuctionAPI;
 using BattleSharp.Wow.DataResources;
 using BattleSharp.Wow.Item;
 using BattleSharp.Wow.RealmStatus;
+using BattleSharp.Wow.SpellAPI;
 
 namespace BattleSharp {
     public class BattleClient {
@@ -38,6 +39,14 @@ namespace BattleSharp {
 
         public async Task<ItemClasses> GetItemClasses() {
             return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&apikey={ApiKey}");
+        }
+
+        #endregion
+
+        #region Spell
+
+        public async Task<Spell> GetSpell(int spellId) {
+            return await JsonUtilities.DeserializeUrlAync<Spell>($"https://eu.api.battle.net/wow/spell/{spellId}?locale=en_GB&apikey={ApiKey}");
         }
 
         #endregion

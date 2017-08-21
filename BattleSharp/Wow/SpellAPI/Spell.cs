@@ -1,4 +1,4 @@
-﻿namespace BattleSharp.Wow {
+﻿namespace BattleSharp.Wow.SpellAPI {
     public class Spell {
         public int Id { get; set; }
         public string Name { get; set; }

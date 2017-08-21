@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using BattleSharp.Wow.SpellAPI;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

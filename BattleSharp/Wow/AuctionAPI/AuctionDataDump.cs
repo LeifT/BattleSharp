@@ -2,7 +2,7 @@
 using BattleSharp.Wow.RealmStatus;
 using Newtonsoft.Json;
 
-namespace BattleSharp.Wow.Auction {
+namespace BattleSharp.Wow.AuctionAPI {
     public class AuctionDataDump  {
         [JsonProperty]
         public ICollection<Auction> Auctions { get; private set; }

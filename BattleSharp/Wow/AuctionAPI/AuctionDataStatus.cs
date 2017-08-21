@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace BattleSharp.Wow.Auction {
+namespace BattleSharp.Wow.AuctionAPI {
     [JsonObject]
     public class AuctionDataStatus : IEnumerable<AuctionFile> {
         [JsonProperty]
