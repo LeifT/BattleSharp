@@ -24,19 +24,19 @@ namespace BattleSharp {
 
         #endregion
 
-        #region Auction API 
+        #region Auction API
 
-        public async Task<AuctionDataStatus> GetAuctionFiles(string realm) {
+        public async Task<AuctionDataStatus> GetAuctionDataStatus(string realm) {
             return await JsonUtilities.DeserializeUrlAync<AuctionDataStatus>($"https://eu.api.battle.net/wow/auction/data/{realm}?locale=en_GB&apikey={ApiKey}");
         }
 
-        public async Task<AuctionDataDump> GetAuctionData(AuctionFile auctionHouseFile) {
+        public async Task<AuctionDataDump> GetAuctionDataDump(AuctionFile auctionHouseFile) {
             return await JsonUtilities.DeserializeUrlAync<AuctionDataDump>(auctionHouseFile.Url);
         }
 
-        public async Task<AuctionDataDump> GetAuctionData(string realm) {
-            var files = await GetAuctionFiles(realm);
-            return await GetAuctionData(files.Files[0]);
+        public async Task<AuctionDataDump> GetAuctionDataDump(string realm) {
+            var files = await GetAuctionDataStatus(realm);
+            return await GetAuctionDataDump(files.Files[0]);
         }
 
         #endregion
@@ -81,12 +81,12 @@ namespace BattleSharp {
 
         #region Realm Status API 
 
-        public async Task<Realms> GetRealms() {
-            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey={ApiKey}");
+        public async Task<RealmList> GetRealmStatus() {
+            return await JsonUtilities.DeserializeUrlAync<RealmList>($"https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey={ApiKey}");
         }
 
-        public async Task<Realms> GetRealms(params string[] realms) {
-            return await JsonUtilities.DeserializeUrlAync<Realms>($"https://eu.api.battle.net/wow/realm/status?realms={string.Join(",", realms)}&locale=en_GB&apikey={ApiKey}");
+        public async Task<RealmList> GetRealmStatus(params string[] realms) {
+            return await JsonUtilities.DeserializeUrlAync<RealmList>($"https://eu.api.battle.net/wow/realm/status?realms={string.Join(",", realms)}&locale=en_GB&apikey={ApiKey}");
         }
 
         #endregion

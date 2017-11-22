@@ -30,14 +30,14 @@ namespace BattleSharp.Utilities {
         }
 
         public static async Task<T> DeserializeUrlAync<T>(string url) where T : class {
-            if (string.IsNullOrWhiteSpace(url)) {
-                if (url == null) {
-                    throw new ArgumentNullException(nameof(url));
-                }
-
-                throw new ArgumentException(nameof(url));
+            if (url == null) {
+                throw new ArgumentNullException(nameof(url));
             }
 
+            if (string.IsNullOrWhiteSpace(url)) {
+                throw new ArgumentException(nameof(url));
+            }
+            
             var handler = new HttpClientHandler {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };

@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 
 namespace BattleSharp.Wow.RealmStatus   {
     [JsonObject]
-    public class Realms : IEnumerable<Realm> {
+    public class RealmList : IEnumerable<Realm> {
         [JsonProperty(PropertyName = "realms")]
-        public ICollection<Realm> RealmList { get; set; }
+        public ICollection<Realm> Realms { get; private set; }
 
         public IEnumerator<Realm> GetEnumerator() {
-            return RealmList.GetEnumerator();
+            return Realms.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
