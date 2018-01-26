@@ -12,13 +12,12 @@ namespace BattleSharp
             _client_secret = client_secret;
         }
 
-        public async Task<RootObject> GetAccessToken() {
-            return await JsonUtilities.DeserializeUrlAync<RootObject>($"https://eu.battle.net/oauth/token?grant_type=client_credentials&client_id={_client_id}&client_secret={_client_secret}");
+        public async Task<Token> GetAccessToken() {
+            return await JsonUtilities.DeserializeUrlAync<Token>($"https://eu.battle.net/oauth/token?grant_type=client_credentials&client_id={_client_id}&client_secret={_client_secret}");
         }
     }
 
-    public class RootObject
-    {
+    public class Token {
         public string access_token { get; set; }
         public string token_type { get; set; }
         public int expires_in { get; set; }
