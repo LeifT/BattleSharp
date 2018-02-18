@@ -1,25 +1,29 @@
-﻿namespace BattleSharp.Wow.AuctionAPI {
+﻿using BattleSharp.Utilities;
+using Newtonsoft.Json;
+
+namespace BattleSharp.Wow.AuctionAPI {
+    [JsonConverter(typeof(AuctionConverter))]
     public class Auction {
-        public long Auc;
-        public int Item;
-        public string Owner;
-        public string OwnerRealm;
-        public long Bid;
-        public long Buyout;
-        public int Quantity;
-        public string TimeLeft;
-        public long Rand;
-        public long Seed;
-        public int Context;
-        public BonusList[] BonusLists;
-        public Modifier[] Modifiers { get; set; }
-        public int PetSpeciesId;        // Pet
-        public int PetBreedId;          // Pet
-        public int PetLevel;            // Pet
-        public int PetQualityId;        // Pet
+        public int Auc { get; set; }
+        public int Item { get; set; }
+        public string Owner { get; set; }
+        public string OwnerRealm { get; set; }
+        public long Bid { get; set; }
+        public long Buyout { get; set; }
+        public int Quantity { get; set; }
+        public string TimeLeft { get; set; }
+        public int Rand { get; set; }
+        public long Seed { get; set; }
+        public int Context { get; set; }
+        public int[] BonusLists { get; set; }
+        public int[,] Modifiers { get; set; }
+        public int PetSpeciesId { get; set; }        // Pet
+        public int PetBreedId { get; set; }          // Pet
+        public int PetLevel { get; set; }           // Pet
+        public int PetQualityId { get; set; }       // Pet
 
         public override string ToString() {
-            return $"{Item} {Owner}";
+            return $"{Auc} {Item} {Owner}";
         }
     }
 }
