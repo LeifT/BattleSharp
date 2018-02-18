@@ -8,6 +8,20 @@ using Newtonsoft.Json;
 namespace BattleSharp.Utilities {
 
     public static class JsonUtilities {
+
+        //static HttpClient client = new HttpClient();
+
+        //static async Task<T> GetProductAsync<T>(string path) where T : class
+        //{
+        //    T product = null;
+        //    HttpResponseMessage response = await client.GetAsync(path);
+        //    if (response.IsSuccessStatusCode) {
+        //        product = await response.Content.ReadAsAsync<String>();
+        //    }
+        //    return product;
+        //}
+
+
         private static T DeserializeStream<T>(Stream jsonStream) where T : class {
             if (jsonStream == null) {
                 throw new ArgumentNullException(nameof(jsonStream));

@@ -11,11 +11,15 @@
         public long Rand;
         public long Seed;
         public int Context;
-        // bonusLists
-        // modifiers
+        public BonusList[] BonusLists;
+        public Modifier[] Modifiers { get; set; }
         public int PetSpeciesId;        // Pet
         public int PetBreedId;          // Pet
         public int PetLevel;            // Pet
         public int PetQualityId;        // Pet
+
+        public override string ToString() {
+            return $"{Item} {Owner}";
+        }
     }
 }

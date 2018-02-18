@@ -9,7 +9,7 @@ namespace BattleSharp.Wow.Achievement {
         public string Reward { get; set; }
         public ICollection<Item.Item> RewardItems { get; set; }
         public string Icon { get; set; }
-        public ICollection<Criterion> Criteria { get; set; }
+        public ICollection<Criteria> Criteria { get; set; }
         public bool AccountWide { get; set; }
         public int FactionId { get; set; }
     }
