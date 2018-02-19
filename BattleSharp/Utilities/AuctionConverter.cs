@@ -44,6 +44,19 @@ namespace BattleSharp.Utilities
                 auction.BonusLists = bonus;
             }
 
+            var modifiers = item["modifiers"];
+            if (modifiers != null && modifiers.HasValues) {
+                int[,] temp = new int[modifiers.Children<JObject>().Count(), 2];
+                int index = 0;
+
+                foreach (var child in modifiers.Children<JObject>()) {
+                    temp[index, 0] = child["type"].Value<int>();
+                    temp[index, 1] = child["value"].Value<int>();
+                    index++;
+                }
+                auction.Modifiers = temp;
+            } 
+
             return auction;
         }
 
