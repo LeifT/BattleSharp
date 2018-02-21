@@ -62,22 +62,24 @@ namespace BattleSharp {
         #region Item API
 
         public async Task<Item> GetItem(int itemId) {
-            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}?locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://eu.api.battle.net/wow/item/{itemId}?locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
         }
 
         public async Task<Item> GetItem(int itemId, params int[] bonusList) {
-            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://eu.api.battle.net/wow/item/{itemId}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
         }
 
         public async Task<Item> GetItem(int itemId, string context) {
-            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}/{context}?locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://eu.api.battle.net/wow/item/{itemId}/{context}?locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
         }
 
         public async Task<Item> GetItem(int itemId, string context, params int[] bonusList) {
-            return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}/{context}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://eu.api.battle.net/wow/item/{itemId}/{context}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
         }
 
-        // TODO: ITEM SET
+        public async Task<Item> GetItemSet(int setId) {
+            return await JsonUtilities.DeserializeUrlAync<Item>($"https://eu.api.battle.net/wow/item/set/{setId}?apikey={ApiKey}").ConfigureAwait(false);
+        }
 
         #endregion
 
