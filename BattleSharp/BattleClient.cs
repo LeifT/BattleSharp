@@ -53,6 +53,12 @@ namespace BattleSharp {
 
         #endregion
 
+        // TODO: Challenge Mode API 
+
+        // TODO: Character Profile API 
+
+        // TODO: Guild Profile API
+
         #region Item API
 
         public async Task<Item> GetItem(int itemId) {
@@ -71,13 +77,17 @@ namespace BattleSharp {
             return await JsonUtilities.DeserializeUrlAync<Item>($"https://us.api.battle.net/wow/item/{itemId}/{context}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
         }
 
-        // TODO Get item set
-
-        public async Task<ItemClasses> GetItemClasses() {
-            return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
-        }
+        // TODO: ITEM SET
 
         #endregion
+
+        // TODO: Mount API 
+
+        // TODO: Pet API 
+
+        // TODO: PVP API 
+
+        // TODO: Quest API 
 
         #region Realm Status API 
 
@@ -91,10 +101,24 @@ namespace BattleSharp {
 
         #endregion
 
+        // TODO: Recipe API 
+
         #region Spell API
 
         public async Task<Spell> GetSpell(int spellId) {
             return await JsonUtilities.DeserializeUrlAync<Spell>($"https://eu.api.battle.net/wow/spell/{spellId}?locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
+        }
+
+        #endregion
+
+        // TODO: Zone API 
+
+        // TODO: Data Resources 
+
+        #region Data Resources 
+
+        public async Task<ItemClasses> GetItemClasses() {
+            return await JsonUtilities.DeserializeUrlAync<ItemClasses>($"https://us.api.battle.net/wow/data/item/classes?locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
         }
 
         #endregion
