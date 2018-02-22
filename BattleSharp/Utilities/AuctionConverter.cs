@@ -12,6 +12,8 @@ namespace BattleSharp.Utilities
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+            Console.WriteLine("Auction converter");
+
             if (reader.TokenType == JsonToken.Null) {
                 return string.Empty;
             }

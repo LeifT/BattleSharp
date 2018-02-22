@@ -1,10 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using BattleSharp.Utilities;
 using BattleSharp.Wow.Achievement;
 using BattleSharp.Wow.AuctionAPI;
 using BattleSharp.Wow.BossAPI;
 using BattleSharp.Wow.DataResources;
 using BattleSharp.Wow.Item;
+using BattleSharp.Wow.Mount;
 using BattleSharp.Wow.RealmStatus;
 using BattleSharp.Wow.SpellAPI;
 
@@ -77,13 +81,15 @@ namespace BattleSharp {
             return await JsonUtilities.DeserializeUrlAync<Item>($"https://eu.api.battle.net/wow/item/{itemId}/{context}?bl={string.Join(",", bonusList)}&locale=en_GB&apikey={ApiKey}").ConfigureAwait(false);
         }
 
-        public async Task<Item> GetItemSet(int setId) {
-            return await JsonUtilities.DeserializeUrlAync<Item>($"https://eu.api.battle.net/wow/item/set/{setId}?apikey={ApiKey}").ConfigureAwait(false);
+        public async Task<ItemSet> GetItemSet(int setId) {
+            return await JsonUtilities.DeserializeUrlAync<ItemSet>($"https://eu.api.battle.net/wow/item/set/{setId}?apikey={ApiKey}").ConfigureAwait(false);
         }
 
         #endregion
 
-        // TODO: Mount API 
+        public async Task<ICollection<Mount>> GetMounts() {
+            return await JsonUtilities.DeserializeUrlAync<ICollection<Mount>>($"https://eu.api.battle.net/wow/mount/?apikey={ApiKey}").ConfigureAwait(false);
+        }
 
         // TODO: Pet API 
 

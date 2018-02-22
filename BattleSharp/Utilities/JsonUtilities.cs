@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BattleSharp.Wow.Mount;
 using Newtonsoft.Json;
 
 namespace BattleSharp.Utilities {
@@ -42,6 +43,9 @@ namespace BattleSharp.Utilities {
             using (StreamReader streamReader = new StreamReader(jsonStream)) {
                 using (JsonTextReader jsonReader = new JsonTextReader(streamReader)) {
                     JsonSerializer serializer = new JsonSerializer();
+
+                    serializer.Converters.Add(new MountConvernter());
+
                     deserializedObject = serializer.Deserialize<T>(jsonReader);
                 }
             }
@@ -60,7 +64,7 @@ namespace BattleSharp.Utilities {
 
             Stream jsonStream;
 
-            using (var client = httpClient) {
+            using (var client = new HttpClient()) {
                 jsonStream = await client.GetStreamAsync(url).ConfigureAwait(false);
             }
             
