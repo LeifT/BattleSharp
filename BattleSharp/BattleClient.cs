@@ -10,6 +10,7 @@ using BattleSharp.Wow.DataResources;
 using BattleSharp.Wow.Item;
 using BattleSharp.Wow.Mount;
 using BattleSharp.Wow.RealmStatus;
+using BattleSharp.Wow.Recipe;
 using BattleSharp.Wow.SpellAPI;
 
 namespace BattleSharp {
@@ -110,6 +111,9 @@ namespace BattleSharp {
         #endregion
 
         // TODO: Recipe API 
+        public async Task<Recipe> GetRecipe() {
+            return await JsonUtilities.DeserializeUrlAync<Recipe>($"https://eu.api.battle.net/wow/Recipe/?apikey={ApiKey}").ConfigureAwait(false);
+        }
 
         #region Spell API
 
