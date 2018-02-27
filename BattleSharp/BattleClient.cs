@@ -96,7 +96,9 @@ namespace BattleSharp {
 
         // TODO: PVP API 
 
-        // TODO: Quest API 
+        public async Task<Recipe> GetQuest(int questId) {
+            return await JsonUtilities.DeserializeUrlAync<Recipe>($"https://eu.api.battle.net/wow/quest/{questId}?apikey={ApiKey}").ConfigureAwait(false);
+        }
 
         #region Realm Status API 
 
@@ -110,10 +112,13 @@ namespace BattleSharp {
 
         #endregion
 
-        // TODO: Recipe API 
-        public async Task<Recipe> GetRecipe() {
-            return await JsonUtilities.DeserializeUrlAync<Recipe>($"https://eu.api.battle.net/wow/Recipe/?apikey={ApiKey}").ConfigureAwait(false);
+        #region Recipe API
+
+        public async Task<Recipe> GetRecipe(int recipeId) {
+            return await JsonUtilities.DeserializeUrlAync<Recipe>($"https://eu.api.battle.net/wow/recipe/{recipeId}?apikey={ApiKey}").ConfigureAwait(false);
         }
+
+        #endregion
 
         #region Spell API
 
