@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BattleSharp.Utilities;
 using BattleSharp.Wow.Achievement;
@@ -96,9 +94,13 @@ namespace BattleSharp {
 
         // TODO: PVP API 
 
+        #region Quest API 
+
         public async Task<Recipe> GetQuest(int questId) {
             return await JsonUtilities.DeserializeUrlAync<Recipe>($"https://eu.api.battle.net/wow/quest/{questId}?apikey={ApiKey}").ConfigureAwait(false);
         }
+
+        #endregion
 
         #region Realm Status API 
 

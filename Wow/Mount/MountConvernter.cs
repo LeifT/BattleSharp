@@ -9,13 +9,14 @@ namespace BattleSharp.Wow.Mount {
             if (reader.TokenType == JsonToken.Null) {
                 return string.Empty;
             }
-            Console.WriteLine("HAAHA");
+
             JObject item = JObject.Load(reader);
             
             return item["mounts"].ToObject<ICollection<Mount>>();
         }
 
         public override bool CanConvert(Type objectType) {
+            //TODO: 
             return true;
         }
 

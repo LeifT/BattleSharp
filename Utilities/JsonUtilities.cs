@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace BattleSharp.Utilities {
 
     public static class JsonUtilities {
-        private static readonly HttpClient httpClient;
+        //private static readonly HttpClient httpClient;
 
         //static async Task<T> GetProductAsync<T>(string path) where T : class
         //{
@@ -21,13 +21,13 @@ namespace BattleSharp.Utilities {
         //    return product;
         //}
 
-        static JsonUtilities() {
-            var handler = new HttpClientHandler {
-                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-            };
+        //static JsonUtilities() {
+        //    var handler = new HttpClientHandler {
+        //        AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+        //    };
 
-            httpClient = new HttpClient(handler);
-        }
+        //    httpClient = new HttpClient(handler);
+        //}
 
         private static T DeserializeStream<T>(Stream jsonStream) where T : class {
             if (jsonStream == null) {
@@ -64,7 +64,12 @@ namespace BattleSharp.Utilities {
 
             Stream jsonStream;
 
-            using (var client = new HttpClient()) {
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            using (var client = new HttpClient(handler)) {
                 jsonStream = await client.GetStreamAsync(url).ConfigureAwait(false);
             }
             
